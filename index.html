@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f5ff">
+  <title>TaskFlow | To-Do App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <a class="brand" href="#">
+        <span class="brand-icon">✓</span>
+        TaskFlow
+      </a>
+      <span class="date-label" id="todayLabel"></span>
+    </header>
+
+    <section class="welcome">
+      <p class="eyebrow">YOUR PERSONAL WORKSPACE</p>
+      <h1>Make today <span>count.</span></h1>
+      <p class="subtitle">Organize your tasks. Focus on what matters.</p>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card">
+        <span class="stat-icon purple">▤</span>
+        <div>
+          <p>Total tasks</p>
+          <h2 id="totalCount">0</h2>
+        </div>
+      </article>
+      <article class="stat-card">
+        <span class="stat-icon orange">◷</span>
+        <div>
+          <p>Pending</p>
+          <h2 id="pendingCount">0</h2>
+        </div>
+      </article>
+      <article class="stat-card">
+        <span class="stat-icon green">✓</span>
+        <div>
+          <p>Completed</p>
+          <h2 id="completedCount">0</h2>
+        </div>
+      </article>
+    </section>
+
+    <section class="workspace">
+      <aside class="sidebar">
+        <h3>MY LISTS</h3>
+        <button class="list-button active" data-category="All">
+          <span>▦</span> All tasks <span class="list-count" id="allListCount">0</span>
+        </button>
+        <button class="list-button" data-category="Personal">
+          <span>♡</span> Personal
+        </button>
+        <button class="list-button" data-category="Study">
+          <span>▣</span> Study
+        </button>
+        <button class="list-button" data-category="Work">
+          <span>▤</span> Work
+        </button>
+        <button class="list-button" data-category="Other">
+          <span>✧</span> Other
+        </button>
+
+        <div class="sidebar-note">
+          <span>✦</span>
+          <strong>Small steps every day.</strong>
+          <p>Stay consistent and get things done.</p>
+        </div>
+      </aside>
+
+      <section class="task-area">
+        <div class="section-heading">
+          <div>
+            <h2 id="listHeading">All tasks</h2>
+            <p id="listDescription">Everything you need to get done.</p>
+          </div>
+          <span class="task-total" id="visibleCount">0 tasks</span>
+        </div>
+
+        <form id="taskForm" class="task-form">
+          <label for="taskTitle">Task name</label>
+          <input id="taskTitle" type="text"
+                 placeholder="What do you need to do?"
+                 maxlength="120" required>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="taskCategory">List</label>
+              <select id="taskCategory">
+                <option value="Personal">Personal</option>
+                <option value="Study">Study</option>
+                <option value="Work">Work</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="taskDue">Date &amp; time</label>
+              <input id="taskDue" type="datetime-local">
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button class="primary-button" id="submitButton" type="submit">
+              <span>＋</span> Add task
+            </button>
+            <button class="cancel-button hidden" id="cancelEdit"
+                    type="button">Cancel edit</button>
+          </div>
+        </form>
+
+        <div class="toolbar">
+          <div class="filters" aria-label="Filter tasks">
+            <button class="filter-button active" data-status="All">All</button>
+            <button class="filter-button" data-status="Pending">Pending</button>
+            <button class="filter-button" data-status="Completed">Completed</button>
+          </div>
+          <input id="searchInput" class="search-input"
+                 type="search" placeholder="Search tasks..."
+                 aria-label="Search tasks">
+        </div>
+
+        <div id="taskList" class="task-list"></div>
+
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">✓</div>
+          <h3>No tasks here yet</h3>
+          <p>Add a task above and start making progress.</p>
+        </div>
+      </section>
+    </section>
+
+    <footer>Made with care · TaskFlow To-Do App</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
